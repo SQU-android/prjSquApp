@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SQU App</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="button_Payment">Payment</string>
+    
+    <string name="server_rest_test">http://172.20.10.73:8080</string>
+    <string name="server_rest_dev">http://172.20.10.58:8080</string>
+    
+    <string name="mode_deploy">test</string> <!-- possibilities dev test  -->
+    
+    <string name="app_rest_basic">prjRestBasic</string>
+    
+    <string name="app_rest_payment">prjPaymentPortlet</string>
+    
+    <string name="service_basic_macadd">macadd</string>
+    <string name="service_payment_payment">payment</string>
+</resources>
