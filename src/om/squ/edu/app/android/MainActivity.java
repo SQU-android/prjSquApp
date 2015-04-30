@@ -2,6 +2,7 @@ package om.squ.edu.app.android;
 
 import om.squ.edu.app.android.basic.MacService;
 import om.squ.edu.app.android.payment.PaymentService;
+import om.squ.edu.app.android.util.Constants;
 import om.squ.edu.app.android.util.WifiMacAccess;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -41,26 +43,38 @@ public class MainActivity extends ActionBarActivity {
 			try
 			{
 				WifiMacAccess macAccess	=	new WifiMacAccess(this);
-				macAddress = macAccess.getMac();
+				if(resources.getString(R.string.mode_deploy).equals(Constants.CONST_MODE_DEV))
+				{
+					/* TODO : Mac address of user - for testing in virtual*/
+					macAddress	=	"3423BA4C0127";
+				}
+				else
+				{
+					macAddress = macAccess.getMac();
+				}
 				
 				TextView txtViewMac = (TextView)findViewById(R.id.txtViewMacAdd);
-				txtViewMac.setText(macAddress); 
+				//txtViewMac.setText(macAddress); 
+				
+				
+				prefUser = getApplicationContext().getSharedPreferences(PREFER_NAME, PRIVATE_MODE);
+				
+				
+				
+				TextView textViewName 	= 	(TextView)findViewById(R.id.txtName);
+				TextView textViewId		=	(TextView)findViewById(R.id.txtId);
+
+				MacService macRestService = new MacService(macAddress,textViewName, textViewId, prefUser, resources);
+				userId = prefUser.getString("userId", null);
 				
 			}
 			catch(Exception ex)
 			{
 				System.out.println("error : "+ex.getMessage());
+				Toast.makeText(getApplicationContext(), "Error : Check SQU Wifi Connection. Details : "+ex.getMessage(), Toast.LENGTH_LONG).show();
 			}
 			
-			prefUser = getApplicationContext().getSharedPreferences(PREFER_NAME, PRIVATE_MODE);
-			
-			
-			
-			TextView textViewName 	= 	(TextView)findViewById(R.id.txtName);
-			TextView textViewId		=	(TextView)findViewById(R.id.txtId);
 
-			MacService macRestService = new MacService(macAddress,textViewName, textViewId, prefUser, resources);
-			userId = prefUser.getString("userId", null);
 			
 			//Log.e(" User 4 :",(String)textViewId.getText());
 			

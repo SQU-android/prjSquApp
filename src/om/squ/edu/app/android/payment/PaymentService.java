@@ -19,6 +19,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.GridLayout;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
@@ -36,7 +37,7 @@ public class PaymentService extends ActionBarActivity
 	
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
 		{
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.layout_payment);
@@ -51,7 +52,18 @@ public class PaymentService extends ActionBarActivity
 			new Payment().execute(userId);
 			
 		}
+		
+	
+		
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		getMenuInflater().inflate(R.menu.menu_payment, menu);
+		return true;
 	}
+		
+		
+	
 	
 	private class Payment extends AsyncTask<String, Void, PaymentEarn>
 	{

@@ -1295,6 +1295,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050027;
         public static final int action_menu_presenter=0x7f050028;
         public static final int action_mode_close_button=0x7f050035;
+        public static final int action_payment=0x7f050059;
         public static final int action_settings=0x7f050058;
         public static final int activity_chooser_view_content=0x7f050036;
         public static final int alignBounds=0x7f050002;
@@ -1366,9 +1367,9 @@ containing a value of this type.
         public static final int txtLblName=0x7f05004e;
         public static final int txtName=0x7f05004f;
         public static final int txtSpace1=0x7f050050;
-        public static final int txtSpace2=0x7f050055;
-        public static final int txtViewBeta=0x7f050056;
-        public static final int txtViewMacAdd=0x7f050054;
+        public static final int txtSpace2=0x7f050054;
+        public static final int txtViewBeta=0x7f050055;
+        public static final int txtViewMacAdd=0x7f050056;
         public static final int up=0x7f050032;
         public static final int useLogo=0x7f050015;
         public static final int vertical=0x7f050001;
@@ -1431,6 +1432,7 @@ containing a value of this type.
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
+        public static final int menu_payment=0x7f0c0001;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1475,15 +1477,16 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int action_settings=0x7f0a000f;
         public static final int app_name=0x7f0a000d;
-        /**  possibilities dev test  
-         */
         public static final int app_rest_basic=0x7f0a0014;
         public static final int app_rest_payment=0x7f0a0015;
         public static final int button_Payment=0x7f0a0010;
         public static final int hello_world=0x7f0a000e;
-        public static final int mode_deploy=0x7f0a0013;
-        public static final int server_rest_dev=0x7f0a0012;
-        public static final int server_rest_test=0x7f0a0011;
+        public static final int menu_payment_details=0x7f0a0018;
+        public static final int mode_deploy=0x7f0a0011;
+        public static final int server_rest_dev=0x7f0a0013;
+        /**  possibilities: dev , test  
+         */
+        public static final int server_rest_test=0x7f0a0012;
         public static final int service_basic_macadd=0x7f0a0016;
         public static final int service_payment_payment=0x7f0a0017;
     }

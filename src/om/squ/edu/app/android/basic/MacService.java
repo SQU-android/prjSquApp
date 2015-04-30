@@ -34,13 +34,8 @@ public class MacService
 		String	mode = resources.getString(R.string.mode_deploy);
 		ServiceUtil	serviceUtil	=	new ServiceUtil(resources, mode);
 		
-		//TODO - Remove the hard-coded mac address
-		//macAddress = "3423BA4C0127";
-		
 		editor	=	prefUser.edit();
 		
-		
-		//String urlWifi	= "http://@172.20.10.58:8080/prjRestBasic/macadd";
 		String	 urlWifi 	=	serviceUtil.getUrlMac();
 		this.urlWifiUser = urlWifi + "/"+macAddress;
 		this.textViewName	=	txtViewName;

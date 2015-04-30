@@ -22,7 +22,7 @@
     	        android:id="@+id/txtName"
     	        android:layout_width="wrap_content"
     	        android:layout_height="wrap_content"
-    	        android:text="TextView" />
+    	        android:text="xxxx" />
                  
                  <TextView
                  android:id="@+id/txtSpace1"
@@ -39,7 +39,7 @@
                  android:id="@+id/txtId"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:text="1234" />
+                 android:text="****" />
                  
        </LinearLayout>
 
@@ -48,21 +48,14 @@
               android:layout_height="wrap_content"
               android:orientation="horizontal" >
 
-    <ImageButton
-        android:id="@+id/imgBttnPayment"
-        android:layout_width="57dp"
-        android:layout_height="50dp"
-        android:background="@null"
-        android:contentDescription="@string/button_Payment"
-        android:onClick="clickPayment"
-        android:src="@drawable/ic_payment" />
-
-    <TextView
-        android:id="@+id/txtViewMacAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
+				    <ImageButton
+				        android:id="@+id/imgBttnPayment"
+				        android:layout_width="57dp"
+				        android:layout_height="50dp"
+				        android:background="@null"
+				        android:contentDescription="@string/button_Payment"
+				        android:onClick="clickPayment"
+				        android:src="@drawable/ic_payment" />
 		</LinearLayout>
           <TextView
               android:id="@+id/txtSpace2"
@@ -78,6 +71,12 @@
               android:layout_gravity="bottom"
               android:text="Beta - Programme - (Author : Bhabesh)"
               android:textColor="#0000FF" />
+          
+              <TextView
+		        android:id="@+id/txtViewMacAdd"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="" />
           
 </LinearLayout>
 
