@@ -5,8 +5,11 @@ package om.squ.edu.app.android.basic;
 
 import om.squ.edu.app.android.R;
 import om.squ.edu.app.android.basic.bo.User;
+import om.squ.edu.app.android.util.HttpUtils;
 import om.squ.edu.app.android.util.ServiceUtil;
 
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
@@ -43,6 +46,7 @@ public class MacService
 		
 		UserService userService	= new UserService();
 		userService.execute(urlWifiUser);
+		
 
 	}
 
@@ -61,7 +65,14 @@ public class MacService
 		@Override
 		protected User doInBackground(String... params) {
 			String 			urlRest 		=	params[0];
+			
+			
+			
 			RestTemplate 	restTemplate	=	new RestTemplate();
+			/**
+			 * TODO Below line is for bypassing ssl for self generated certificate
+			 */
+			restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(HttpUtils.getNewHttpClient()));				/*By pass ssl */
 			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 			
 			User user	=	restTemplate.getForObject(urlRest, User.class);
