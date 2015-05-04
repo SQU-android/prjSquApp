@@ -7,8 +7,10 @@ package om.squ.edu.app.android.payment;
 import om.squ.edu.app.android.R;
 import om.squ.edu.app.android.payment.bo.Earn;
 import om.squ.edu.app.android.payment.bo.PaymentEarn;
+import om.squ.edu.app.android.util.HttpUtils;
 import om.squ.edu.app.android.util.ServiceUtil;
 
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
@@ -80,7 +82,11 @@ public class PaymentService extends ActionBarActivity
 
 			
 			RestTemplate 	restTemplate	=	new RestTemplate();
-			
+			/**
+			 * TODO Below line is for bypassing ssl for self generated certificate
+			 */
+			restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(HttpUtils.getNewHttpClient()));				/*By pass ssl */
+
 			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 
 			PaymentEarn	paymentEarn = restTemplate.getForObject(urlPayment,PaymentEarn.class);

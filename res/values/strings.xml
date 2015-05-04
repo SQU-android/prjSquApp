@@ -9,8 +9,8 @@
     <string name="button_Payment">Payment</string>
     
     <string name="mode_deploy">test</string> <!-- possibilities: dev , test  -->
-    <string name="server_rest_test">http://172.20.10.73:8080</string>
-    <string name="server_rest_dev">http://172.20.10.58:8080</string>
+    <string name="server_rest_test">https://172.20.10.73:8080</string>
+    <string name="server_rest_dev">https://172.20.10.58:8443</string>
     
 
     
