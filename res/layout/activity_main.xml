@@ -60,10 +60,24 @@
           <TextView
               android:id="@+id/txtSpace2"
               android:layout_width="wrap_content"
-              android:layout_height="200dp"
+              android:layout_height="100dp"
               android:layout_gravity="bottom"
               android:text="" />
 
+          <TextView
+              android:id="@+id/txtLoadingMac"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="bottom"
+              android:text="Loading .."
+              android:textColor="#0000FF" />
+            <TextView
+              android:id="@+id/txtSpace3"
+              android:layout_width="wrap_content"
+              android:layout_height="100dp"
+              android:layout_gravity="bottom"
+              android:text="" />        
+          
           <TextView
               android:id="@+id/txtViewBeta"
               android:layout_width="wrap_content"

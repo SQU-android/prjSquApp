@@ -1,7 +1,7 @@
 /**
  * 
  */
-package om.squ.edu.app.android.payment;
+package om.squ.edu.app.android.payment.service;
 
 
 import om.squ.edu.app.android.R;
@@ -14,6 +14,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -22,6 +23,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.GridLayout;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
@@ -64,7 +66,12 @@ public class PaymentService extends ActionBarActivity
 		return true;
 	}
 		
-		
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent	intent = new Intent(this,PaymentDetailService.class);
+		startActivity(intent);
+		return true;
+	}
 	
 	
 	private class Payment extends AsyncTask<String, Void, PaymentEarn>
@@ -75,7 +82,7 @@ public class PaymentService extends ActionBarActivity
 			String				mode 		= 	resources.getString(R.string.mode_deploy);
 			ServiceUtil			serviceUtil	=	new ServiceUtil(resources, mode);
 						
-			String 			userId 		=	params[0];
+			String 				userId 		=	params[0];
 			
 			//String urlPayment01 	= "http://172.20.10.58:8080/prjPaymentPortlet/payment";
 			String urlPayment		=  serviceUtil.getUrlPayment()+"/" + userId;

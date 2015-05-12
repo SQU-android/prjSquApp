@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activityFrame"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:baselineAligned="false"
+    android:gravity="center_horizontal"
+    >
+
+
+    	<TextView
+	    android:id="@+id/textPaymentDetails"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    
+	    android:text="@string/heading_payment_details" />
+    	
+    	<TextView
+	    android:id="@+id/textPaymentYear"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/payment_year" />
+    	
+    	    	<TextView
+	    android:id="@+id/textPaymentLine1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="__________________________________" />
+    	
+			 <android.support.v7.widget.GridLayout
+			          android:id="@+id/gridPayment_detail"
+			          android:layout_width="wrap_content"
+			          android:layout_height="wrap_content" 
+			          
+			          >
+			      </android.support.v7.widget.GridLayout>      
+	    
+	
+
+
+
+</LinearLayout>

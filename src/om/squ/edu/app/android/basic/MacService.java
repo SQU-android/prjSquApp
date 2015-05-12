@@ -17,6 +17,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.AsyncTask;
+import android.webkit.WebView.FindListener;
 import android.widget.TextView;
 
 /**
@@ -26,15 +27,17 @@ import android.widget.TextView;
 public class MacService 
 {
 	User userServ = null; 
-	private String 		urlWifiUser 	=	null;
-	private	TextView 	textViewName	=	null;
-	private	TextView	textViewId		=	null;
-	private Editor 		editor;
+	private 	String 		urlWifiUser 	=	null;
+	private		TextView 	textViewName	=	null;
+	private		TextView	textViewId		=	null;
+	private 	Editor 		editor;
+	protected	TextView	textLoadingMac;
 	
 	
-	public MacService(String macAddress, TextView txtViewName, TextView txtViewId, SharedPreferences	prefUser, Resources resources)
+	public MacService(String macAddress, TextView txtViewName, TextView txtViewId, TextView txtLoadingMac, SharedPreferences	prefUser, Resources resources)
 	{
-		String	mode = resources.getString(R.string.mode_deploy);
+						
+		String		mode 		= 	resources.getString(R.string.mode_deploy);
 		ServiceUtil	serviceUtil	=	new ServiceUtil(resources, mode);
 		
 		editor	=	prefUser.edit();
@@ -43,6 +46,7 @@ public class MacService
 		this.urlWifiUser = urlWifi + "/"+macAddress;
 		this.textViewName	=	txtViewName;
 		this.textViewId		=	txtViewId;
+		this.textLoadingMac	=	txtLoadingMac;
 		
 		UserService userService	= new UserService();
 		userService.execute(urlWifiUser);
@@ -50,7 +54,7 @@ public class MacService
 
 	}
 
-	private class UserService extends AsyncTask<String, Void, User>
+	private class UserService extends AsyncTask<String, Integer, User>
 	{
 		private User	user	=	null;
 		
@@ -85,11 +89,17 @@ public class MacService
 		    protected void onPostExecute(User user) {
 		    	textViewName.setText(user.getUserName());
 		    	textViewId.setText(user.getUserId());
+		    	textLoadingMac.setText("");
 		    	editor.putString("userId", user.getUserId());
 		    	editor.commit();
 		    }
 		
-		
+		   @Override
+	        protected void onProgressUpdate(Integer... values) {
+			   //super.onProgressUpdate(values);  
+			   textLoadingMac.setText(" .. Loading .. "+values[0] + "%");
+			   
+		   }
 		
 	}
 }
