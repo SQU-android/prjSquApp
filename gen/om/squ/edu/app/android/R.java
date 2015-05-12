@@ -1300,9 +1300,9 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050027;
         public static final int action_menu_presenter=0x7f050028;
         public static final int action_mode_close_button=0x7f050035;
-        public static final int action_payment=0x7f050062;
-        public static final int action_settings=0x7f050061;
-        public static final int activityFrame=0x7f050059;
+        public static final int action_payment=0x7f050060;
+        public static final int action_settings=0x7f05005f;
+        public static final int activityFrame=0x7f05005a;
         public static final int activity_chooser_view_content=0x7f050036;
         public static final int alignBounds=0x7f050002;
         public static final int alignMargins=0x7f050003;
@@ -1328,8 +1328,8 @@ containing a value of this type.
         public static final int fill=0x7f05000d;
         public static final int fill_horizontal=0x7f05000b;
         public static final int fill_vertical=0x7f050009;
-        public static final int gridPayment=0x7f05005e;
-        public static final int gridPayment_detail=0x7f050060;
+        public static final int gridPayment=0x7f050059;
+        public static final int gridPayment_detail=0x7f05005e;
         public static final int home=0x7f050025;
         public static final int homeAsUp=0x7f050017;
         public static final int horizontal=0x7f050000;
@@ -1344,8 +1344,6 @@ containing a value of this type.
         public static final int never=0x7f05001b;
         public static final int none=0x7f050022;
         public static final int normal=0x7f050012;
-        public static final int payment_date_frame=0x7f05005c;
-        public static final int payment_detail_frame=0x7f05005d;
         public static final int progress_circular=0x7f050029;
         public static final int progress_horizontal=0x7f05002a;
         public static final int radio=0x7f050040;
@@ -1368,9 +1366,9 @@ containing a value of this type.
         public static final int start=0x7f050010;
         public static final int submit_area=0x7f05004a;
         public static final int tabMode=0x7f050014;
-        public static final int textPaymentDetails=0x7f05005a;
-        public static final int textPaymentLine1=0x7f05005f;
-        public static final int textPaymentYear=0x7f05005b;
+        public static final int textPaymentDetails=0x7f05005b;
+        public static final int textPaymentLine1=0x7f05005d;
+        public static final int textPaymentYear=0x7f05005c;
         public static final int title=0x7f05003c;
         public static final int top=0x7f050004;
         public static final int top_action_bar=0x7f050031;
@@ -1440,13 +1438,9 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_main=0x7f030018;
-        public static final int fragment_main=0x7f030019;
-        public static final int fragment_payment_main=0x7f03001a;
-        public static final int fragment_payment_main_date=0x7f03001b;
-        public static final int fragment_payment_main_details=0x7f03001c;
-        public static final int layout_payment=0x7f03001d;
-        public static final int layout_payment_detail=0x7f03001e;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
+        public static final int layout_payment=0x7f030019;
+        public static final int layout_payment_detail=0x7f03001a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001b;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;

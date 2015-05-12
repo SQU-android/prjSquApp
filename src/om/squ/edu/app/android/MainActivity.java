@@ -37,8 +37,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		
 		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
+
 			
 			try
 			{
@@ -74,14 +73,6 @@ public class MainActivity extends ActionBarActivity {
 				System.out.println("error : "+ex.getMessage());
 				Toast.makeText(getApplicationContext(), "Error : Check SQU Wifi Connection. Details : "+ex.getMessage(), Toast.LENGTH_LONG).show();
 			}
-			
-
-			
-			//Log.e(" User 4 :",(String)textViewId.getText());
-			
-			
-			
-			
 			
 			
 
@@ -122,23 +113,6 @@ public class MainActivity extends ActionBarActivity {
 	}
 	
 	
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
 
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
-			return rootView;
-		}
-	}
-	
-	
 
 }
