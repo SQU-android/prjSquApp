@@ -5,25 +5,42 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     
-    
+    <string name="prefer_name">squAppEmpPrefer</string>
+
     <string name="button_Payment">Payment</string>
     
-    <string name="mode_deploy">test</string> <!-- possibilities: dev , test  -->
-    <string name="server_rest_test">https://172.20.10.73:8080</string>
-    <string name="server_rest_dev">https://172.20.10.58:8443</string>
+    <string name="mode_deploy">dev</string> <!-- possibilities: dev , test  -->
+    
+ <!-- start REST Service urls  -->   
+
+    <string name="server_rest_test">https://172.20.10.73:8443</string>
+    <string name="server_rest_dev">http://172.20.10.58:8080</string>
     
 
     
     <string name="app_rest_basic">prjRestBasic</string>
+    <string name="service_basic_macadd">macadd</string>
     
     <string name="app_rest_payment">prjPaymentPortlet</string>
-    
-    <string name="service_basic_macadd">macadd</string>
     <string name="service_payment_payment">payment</string>
+    <string name="service_payment_currYear">currYear</string>
     
+<!-- end REST Service urls  -->
     
     <string name="menu_payment_details">Payment Details</string>
+    <string name="heading_payment_details">Payment Details</string>
+    <string name="payment_year">Payment for Year : </string>
+    
+    <string name="payment_dt_txt">Date </string>
+    <string name="payment_amt_txt">Amount</string>
+    <string name="payment_desc_txt">Description</string>
     
     
+    <!-- Test values -->
+    <string-array name="Titles">
+        <item>The Tragedy of Hamlet, Prince of Denmark</item>
+        <item>King Lear</item>
+        <item>Julius Caesar</item>
+    </string-array>
     
 </resources>

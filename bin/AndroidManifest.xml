@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="om.squ.edu.app.android"
-    android:versionCode="2015050401"
+    android:versionCode="2015050501"
     android:versionName="1.1" >
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
@@ -12,7 +12,7 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <application
@@ -31,7 +31,10 @@
         </activity>
         
         <activity
-            android:name="om.squ.edu.app.android.payment.PaymentService">
+            android:name="om.squ.edu.app.android.payment.service.PaymentService">
+        </activity>
+        <activity
+            android:name="om.squ.edu.app.android.payment.service.PaymentDetailService">
         </activity>
         
     </application>

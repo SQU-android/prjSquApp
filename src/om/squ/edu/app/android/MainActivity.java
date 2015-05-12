@@ -1,7 +1,7 @@
 package om.squ.edu.app.android;
 
 import om.squ.edu.app.android.basic.MacService;
-import om.squ.edu.app.android.payment.PaymentService;
+import om.squ.edu.app.android.payment.service.PaymentService;
 import om.squ.edu.app.android.util.Constants;
 import om.squ.edu.app.android.util.WifiMacAccess;
 import android.content.Intent;
@@ -63,8 +63,9 @@ public class MainActivity extends ActionBarActivity {
 				
 				TextView textViewName 	= 	(TextView)findViewById(R.id.txtName);
 				TextView textViewId		=	(TextView)findViewById(R.id.txtId);
+				TextView textLoadingMac	=	(TextView)findViewById(R.id.txtLoadingMac);
 
-				MacService macRestService = new MacService(macAddress,textViewName, textViewId, prefUser, resources);
+				MacService macRestService = new MacService(macAddress,textViewName, textViewId, textLoadingMac, prefUser, resources);
 				userId = prefUser.getString("userId", null);
 				
 			}
@@ -93,6 +94,7 @@ public class MainActivity extends ActionBarActivity {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		
 		return true;
 	}
 
@@ -105,6 +107,7 @@ public class MainActivity extends ActionBarActivity {
 		if (id == R.id.action_settings) {
 			return true;
 		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
