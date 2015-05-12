@@ -48,6 +48,15 @@
               android:layout_height="wrap_content"
               android:orientation="horizontal" >
 
+              
+              <ImageButton
+                  android:id="@+id/imgBttnSqu"
+                  android:layout_width="57dp"
+				  android:layout_height="50dp"
+				  android:background="@null"
+				  android:onClick="clickSqu"
+                  android:src="@drawable/ic_squ_logo" />
+
 				    <ImageButton
 				        android:id="@+id/imgBttnPayment"
 				        android:layout_width="57dp"

@@ -9,7 +9,7 @@
 
     <string name="button_Payment">Payment</string>
     
-    <string name="mode_deploy">dev</string> <!-- possibilities: dev , test  -->
+    <string name="mode_deploy">test</string> <!-- possibilities: dev , test  -->
     
  <!-- start REST Service urls  -->   
 

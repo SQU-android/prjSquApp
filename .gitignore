@@ -1,1 +1,10 @@
 *.class
+bin/dexedLibs/android-support-v4-ffa2b46625a89d76c4dd805016aecc15.jar
+bin/dexedLibs/android-support-v7-appcompat-881bbe6a4d7cb69c7e5ef0cd4332e5f5.jar
+bin/dexedLibs/android-support-v7-gridlayout-2740bff7bab9d184c7fcd06c2d3fa841.jar
+bin/dexedLibs/appcompat_v7_2-66e1d24b2cf6b6279b7fe9e3d878b5a4.jar
+bin/dexedLibs/gridlayout_v7-895ede84789cac98ec7b491f837f3a58.jar
+bin/dexedLibs/jackson-annotations-2.3.0-5c04317d94d723e3be5d0c1d93f86c7d.jar
+bin/dexedLibs/jackson-core-2.3.2-dc88c366fb8787284aeeede8afac152c.jar
+bin/dexedLibs/jackson-databind-2.3.2-bc80d06d915337652a9f986cf9f0fa3d.jar
+bin/dexedLibs/spring-android-core-2.0.0.M1-2e1d763f5060a9ba74c4079f2cfecd85.jar

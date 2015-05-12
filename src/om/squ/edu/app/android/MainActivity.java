@@ -4,9 +4,11 @@ import om.squ.edu.app.android.basic.MacService;
 import om.squ.edu.app.android.payment.service.PaymentService;
 import om.squ.edu.app.android.util.Constants;
 import om.squ.edu.app.android.util.WifiMacAccess;
+import om.squ.edu.app.android.web.SquWebAccessService;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -15,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -112,7 +115,16 @@ public class MainActivity extends ActionBarActivity {
 		startActivity(intentPayment);
 	}
 	
-	
+	public void clickSqu(View view)
+	{
+		
+
+		
+		Intent intentWeb	=	new Intent(getApplicationContext(),SquWebAccessService.class);
+		
+		startActivity(intentWeb);
+		
+	}
 
 
 }
