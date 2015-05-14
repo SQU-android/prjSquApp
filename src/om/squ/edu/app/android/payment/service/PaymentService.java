@@ -14,6 +14,9 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -32,12 +35,12 @@ import android.widget.TextView;
  * @author Bhabesh
  *
  */
-public class PaymentService extends ActionBarActivity
+public class PaymentService extends Activity
 {
 	int PRIVATE_MODE = 0;
 	private	SharedPreferences	prefUser;
 	private static final String PREFER_NAME 	= "squAppEmpPrefer";
-	
+		
 	
 	
 	@Override
@@ -45,9 +48,7 @@ public class PaymentService extends ActionBarActivity
 		{
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.layout_payment);
-			
-			
-			
+
 			prefUser = getApplicationContext().getSharedPreferences(PREFER_NAME, PRIVATE_MODE);
 			String userId = prefUser.getString("userId", null);
 			
@@ -56,35 +57,33 @@ public class PaymentService extends ActionBarActivity
 			new Payment().execute(userId);
 			
 		}
-		
 	
 		
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-		getMenuInflater().inflate(R.menu.menu_payment, menu);
 		return true;
 	}
 		
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent	intent = new Intent(this,PaymentDetailService.class);
-		startActivity(intent);
 		return true;
 	}
 	
 	
 	private class Payment extends AsyncTask<String, Void, PaymentEarn>
 	{
+		private	String	msgError	=	null;
 		@Override
 		protected PaymentEarn doInBackground(String... params) {
 			Resources			resources	=	getResources();
+			PaymentEarn			paymentEarn	=	null;
 			String				mode 		= 	resources.getString(R.string.mode_deploy);
 			ServiceUtil			serviceUtil	=	new ServiceUtil(resources, mode);
 						
 			String 				userId 		=	params[0];
 			
-			//String urlPayment01 	= "http://172.20.10.58:8080/prjPaymentPortlet/payment";
+			
 			String urlPayment		=  serviceUtil.getUrlPayment()+"/" + userId;
 
 			
@@ -96,7 +95,14 @@ public class PaymentService extends ActionBarActivity
 
 			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 
-			PaymentEarn	paymentEarn = restTemplate.getForObject(urlPayment,PaymentEarn.class);
+			try
+			{
+				paymentEarn = restTemplate.getForObject(urlPayment,PaymentEarn.class);
+			}
+			catch(Exception ex)
+			{
+				msgError	=	ex.getMessage();
+			}
 			
 			
 			return paymentEarn;
@@ -105,59 +111,69 @@ public class PaymentService extends ActionBarActivity
 		   @Override
 		    protected void onPostExecute(PaymentEarn paymentEarn) {
 			   GridLayout gridLayout;
-			   gridLayout = (GridLayout)findViewById(R.id.gridPayment);
+			 
 			   
-			   
-			   //gridLayout = new GridLayout(getApplicationContext());
-			   //gridLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-			   //gridLayout.setOrientation(0);
-			   gridLayout.setColumnCount(2);
-			   gridLayout.setRowCount(paymentEarn.getEarns().size());
-			   
-			   for(Earn earn : paymentEarn.getEarns())
+			   if(null == msgError)
 			   {
-				   
-				   
-				   TextView tvEarnDesc 				= new TextView(getApplicationContext());
-				   TextView tvEarnRate 				= new TextView(getApplicationContext());
-				   
-				   tvEarnDesc.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-				   tvEarnRate.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-				   
-				  
-				   tvEarnDesc.setPadding(5, 5, 5, 5);
-				   tvEarnRate.setPadding(5, 5, 5, 5);
-				   
-				   tvEarnDesc.setTextColor(Color.parseColor("#3333FF"));
-				   tvEarnRate.setTextColor(Color.parseColor("#FF3333"));
-
-
-					   tvEarnDesc.setText(earn.getEarnDescription());
-					   tvEarnRate.setText(String.valueOf(earn.getEarnRate()));				   
-
-					   gridLayout.addView(tvEarnDesc);
-					   gridLayout.addView(tvEarnRate);
-			
-				   
-				   
+			   
+					   gridLayout = (GridLayout)findViewById(R.id.gridPayment);
+					   
+					   gridLayout.setColumnCount(2);
+					   gridLayout.setRowCount(paymentEarn.getEarns().size());
+					   
+					   for(Earn earn : paymentEarn.getEarns())
+					   {
+						   
+						   
+						   TextView tvEarnDesc 				= new TextView(getApplicationContext());
+						   TextView tvEarnRate 				= new TextView(getApplicationContext());
+						   
+						   tvEarnDesc.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+						   tvEarnRate.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+						   
+						  
+						   tvEarnDesc.setPadding(5, 5, 5, 5);
+						   tvEarnRate.setPadding(5, 5, 5, 5);
+						   
+						   tvEarnDesc.setTextColor(Color.parseColor("#3333FF"));
+						   tvEarnRate.setTextColor(Color.parseColor("#FF3333"));
+		
+		
+							   tvEarnDesc.setText(earn.getEarnDescription());
+							   tvEarnRate.setText(String.valueOf(earn.getEarnRate()));				   
+		
+							   gridLayout.addView(tvEarnDesc);
+							   gridLayout.addView(tvEarnRate);
+					
+						   
+						   
+					   }
+					   
+					   gridLayout.addView(createTextView("________________________","#000000"));
+					   gridLayout.addView(createTextView("_______","#000000"));
+					   
+					   gridLayout.addView(createTextView("Gross Salary","#000000"));
+					   gridLayout.addView(createTextView(String.valueOf(paymentEarn.getGrossSal()),"#3333FF"));
+					   
+					   gridLayout.addView(createTextView("Total Deduction","#000000"));
+					   gridLayout.addView(createTextView(String.valueOf(paymentEarn.getTotalDeductSal()),"#3333FF"));
+					   
+					   gridLayout.addView(createTextView("Net Salary","#00CC00"));
+					   gridLayout.addView(createTextView(String.valueOf(paymentEarn.getNetSal()),"#00CC00"));
+					   
+					   gridLayout.addView(createTextView("Last Promotion","#000000"));
+					   gridLayout.addView(createTextView(paymentEarn.getLastPromotionDt(),"#FF3333"));
+					   
 			   }
-			   
-			   gridLayout.addView(createTextView("________________________","#000000"));
-			   gridLayout.addView(createTextView("_______","#000000"));
-			   
-			   gridLayout.addView(createTextView("Gross Salary","#000000"));
-			   gridLayout.addView(createTextView(String.valueOf(paymentEarn.getGrossSal()),"#3333FF"));
-			   
-			   gridLayout.addView(createTextView("Total Deduction","#000000"));
-			   gridLayout.addView(createTextView(String.valueOf(paymentEarn.getTotalDeductSal()),"#3333FF"));
-			   
-			   gridLayout.addView(createTextView("Net Salary","#00CC00"));
-			   gridLayout.addView(createTextView(String.valueOf(paymentEarn.getNetSal()),"#00CC00"));
-			   
-			   gridLayout.addView(createTextView("Last Promotion","#000000"));
-			   gridLayout.addView(createTextView(paymentEarn.getLastPromotionDt(),"#FF3333"));
-			   
-			   
+			   else
+			   {
+				   String		strTitle		=	getResources().getString(R.string.ex_error_101_PaymentService_title);
+				   String		strErrText		=	getResources().getString(R.string.ex_error_101_PaymentService);
+				   String		strBttnClose	=	getResources().getString(R.string.bttn_close);
+				   
+				   ServiceUtil	serviceUtil	=	new ServiceUtil(PaymentService.this);
+				   serviceUtil.alertDialogueError(strTitle, strErrText, strBttnClose);
+			   }
 			   
 		   }
 		

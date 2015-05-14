@@ -56,6 +56,13 @@
 				  android:background="@null"
 				  android:onClick="clickSqu"
                   android:src="@drawable/ic_squ_logo" />
+             <ImageButton
+                  android:id="@+id/imgBttnSalary"
+                  android:layout_width="57dp"
+				  android:layout_height="50dp"
+				  android:background="@null"
+				  android:onClick="clickSalary"
+                  android:src="@drawable/ic_salary" />
 
 				    <ImageButton
 				        android:id="@+id/imgBttnPayment"

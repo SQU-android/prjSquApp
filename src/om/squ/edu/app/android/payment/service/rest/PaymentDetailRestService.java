@@ -30,6 +30,7 @@ public class PaymentDetailRestService extends AsyncTask<String, Void, Payment>
 	private GridLayout	gridLayout;
 	private Context		context;
 	private	Resources	resources;
+	private	String		msgErr	=	null;
 	
 	public PaymentDetailRestService( GridLayout gridLayout, Context context, Resources 	resources)
 	{
@@ -40,14 +41,21 @@ public class PaymentDetailRestService extends AsyncTask<String, Void, Payment>
 
 	@Override
 	protected Payment doInBackground(String... params) {
-		
+		Payment payment	=	null;
 		String urlRest	=	params[0];
 		
 		RestTemplate 	restTemplate	=	new RestTemplate();
 		
 		restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(HttpUtils.getNewHttpClient()));				//By pass self signed certificate 
 		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-		Payment payment	=	restTemplate.getForObject(urlRest,Payment.class);
+		try
+		{
+			payment	=	restTemplate.getForObject(urlRest,Payment.class);
+		}
+		catch(Exception ex)
+		{
+			msgErr 	=	ex.getMessage();
+		}
 		return payment;
 	}
 	
@@ -56,23 +64,36 @@ public class PaymentDetailRestService extends AsyncTask<String, Void, Payment>
 	   {
 		   //Log.e("Payment Detail : ", payment.toString());
 		   
-		   gridLayout.setColumnCount(3);
-		   gridLayout.setRowCount(payment.getLstPaymentSummary().size());
-		   
-		   gridLayout.addView(new ServiceUtil(context, resources.getString(R.string.payment_dt_txt), "#000000").getTextView());
-		   gridLayout.addView(new ServiceUtil(context, resources.getString(R.string.payment_amt_txt), "#000000").getTextView());
-		   gridLayout.addView(new ServiceUtil(context, resources.getString(R.string.payment_desc_txt), "#000000").getTextView());
-		   
-		   for(PaymentSummary paymentSummary: payment.getLstPaymentSummary())
+		   if(null == msgErr)
 		   {
-			   gridLayout.addView(new ServiceUtil(context, paymentSummary.getPaymentDt(), "#000000").getTextView());
-			   TextView	tvAmount = new ServiceUtil(context, String.valueOf(paymentSummary.getPayAmount()), "#FF3333").getTextView();
-			   tvAmount.setGravity(Gravity.RIGHT);
-			   gridLayout.addView(tvAmount);
-			   gridLayout.addView(new ServiceUtil(context, paymentSummary.getPaymentDesc(), "#3333FF").getTextView());
+		   
+			   gridLayout.setColumnCount(3);
+			   gridLayout.setRowCount(payment.getLstPaymentSummary().size());
+			   
+			   gridLayout.addView(new ServiceUtil(context, resources.getString(R.string.payment_dt_txt), "#000000").getTextView());
+			   gridLayout.addView(new ServiceUtil(context, resources.getString(R.string.payment_amt_txt), "#000000").getTextView());
+			   gridLayout.addView(new ServiceUtil(context, resources.getString(R.string.payment_desc_txt), "#000000").getTextView());
+			   
+			   for(PaymentSummary paymentSummary: payment.getLstPaymentSummary())
+			   {
+				   gridLayout.addView(new ServiceUtil(context, paymentSummary.getPaymentDt(), "#000000").getTextView());
+				   TextView	tvAmount = new ServiceUtil(context, String.valueOf(paymentSummary.getPayAmount()), "#FF3333").getTextView();
+				   tvAmount.setGravity(Gravity.RIGHT);
+				   gridLayout.addView(tvAmount);
+				   gridLayout.addView(new ServiceUtil(context, paymentSummary.getPaymentDesc(), "#3333FF").getTextView());
+			   }
+			   
 		   }
-		   
-		   
+		   else
+		   {
+			   ServiceUtil	serviceUtil		=	new ServiceUtil(context);
+			   String		strTitle		=	resources.getString(R.string.ex_error_102_PaymentDetailService_title);
+			   String		strMsg			=	resources.getString(R.string.ex_error_102_PaymentDetailService);
+			   String		strBttnClose	=	resources.getString(R.string.bttn_close);
+			   
+			   serviceUtil.alertDialogueError(strTitle, strMsg, strBttnClose);
+			   
+		   }
 		   
 	   }
 

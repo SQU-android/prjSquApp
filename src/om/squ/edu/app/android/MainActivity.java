@@ -1,23 +1,20 @@
 package om.squ.edu.app.android;
 
 import om.squ.edu.app.android.basic.MacService;
+import om.squ.edu.app.android.payment.service.PaymentDetailService;
 import om.squ.edu.app.android.payment.service.PaymentService;
 import om.squ.edu.app.android.util.Constants;
+import om.squ.edu.app.android.util.ServiceUtil;
 import om.squ.edu.app.android.util.WifiMacAccess;
 import om.squ.edu.app.android.web.SquWebAccessService;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,14 +64,20 @@ public class MainActivity extends ActionBarActivity {
 				TextView textViewId		=	(TextView)findViewById(R.id.txtId);
 				TextView textLoadingMac	=	(TextView)findViewById(R.id.txtLoadingMac);
 
-				MacService macRestService = new MacService(macAddress,textViewName, textViewId, textLoadingMac, prefUser, resources);
+				MacService macRestService = new MacService(MainActivity.this,macAddress,textViewName, textViewId, textLoadingMac, prefUser, resources);
 				userId = prefUser.getString("userId", null);
 				
 			}
 			catch(Exception ex)
 			{
-				System.out.println("error : "+ex.getMessage());
-				Toast.makeText(getApplicationContext(), "Error : Check SQU Wifi Connection. Details : "+ex.getMessage(), Toast.LENGTH_LONG).show();
+				ServiceUtil serviceUtil		=	new ServiceUtil(MainActivity.this);
+				String 		strTitle		=	resources.getString(R.string.ex_error_99_mac_service_title);
+				String		strMsgErr		=	resources.getString(R.string.ex_error_99_mac_service);
+				String		strBttnClose	=	resources.getString(R.string.bttn_close);
+				
+				serviceUtil.alertDialogueError(strTitle, strMsgErr, strBttnClose);
+				
+				ex.printStackTrace();
 			}
 			
 			
@@ -105,25 +108,29 @@ public class MainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	public void clickSalary(View view)
+	{
+		//ImageButton	imgBttnPayment = (ImageButton)findViewById(R.id.imgBttnPayment);
+		Intent intentSalary = new Intent(getApplicationContext(),PaymentService.class);
+		startActivity(intentSalary);
+	}
+	
 	/**
 	 * 
 	 */
 	public void clickPayment(View view)
 	{
 		//ImageButton	imgBttnPayment = (ImageButton)findViewById(R.id.imgBttnPayment);
-		Intent intentPayment = new Intent(getApplicationContext(),PaymentService.class);
+		Intent intentPayment = new Intent(getApplicationContext(),PaymentDetailService.class);
 		startActivity(intentPayment);
+
 	}
+
 	
 	public void clickSqu(View view)
 	{
-		
-
-		
 		Intent intentWeb	=	new Intent(getApplicationContext(),SquWebAccessService.class);
-		
 		startActivity(intentWeb);
-		
 	}
 
 
