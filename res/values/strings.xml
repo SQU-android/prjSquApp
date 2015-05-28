@@ -9,7 +9,7 @@
 
     <string name="button_Payment">Payment</string>
     
-    <string name="mode_deploy">test</string> <!-- possibilities: dev , test  -->
+    <string name="mode_deploy">dev</string> <!-- possibilities: dev , test  -->
     
     <!-- Button text -->
     <string name="bttn_close">Close</string>
@@ -28,6 +28,12 @@
     <string name="service_payment_payment">payment</string>
     <string name="service_payment_currYear">currYear</string>
     
+    <string name="app_rest_leaveBal">prjLeaveBal</string>
+    <string name="service_leaveBal_balance">leaveBal</string>
+    
+    
+    
+    
 <!-- end REST Service urls  -->
     
     <string name="menu_payment_details">Payment Details</string>
@@ -38,6 +44,9 @@
     <string name="payment_amt_txt">Amount</string>
     <string name="payment_desc_txt">Description</string>
     
+    <string name="leave_balance_heading">Leave Balance</string>
+	<string name="leave_balance_curr_txt">Current leave balance : </string>
+	<string name="leave_balance_days_txt">  days </string>     
     
 	<!-- Exception -->
 	<string name="ex_error_99_mac_service">Hi!! Check SQU Wifi Connection (Ex# : 100)</string>

@@ -1,11 +1,13 @@
 package om.squ.edu.app.android;
 
 import om.squ.edu.app.android.basic.MacService;
+import om.squ.edu.app.android.leave.leavebal.LeaveBalanceService;
 import om.squ.edu.app.android.payment.service.PaymentDetailService;
 import om.squ.edu.app.android.payment.service.PaymentService;
 import om.squ.edu.app.android.util.Constants;
 import om.squ.edu.app.android.util.ServiceUtil;
 import om.squ.edu.app.android.util.WifiMacAccess;
+import om.squ.edu.app.android.web.SquEmailAccessService;
 import om.squ.edu.app.android.web.SquWebAccessService;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -132,6 +134,11 @@ public class MainActivity extends ActionBarActivity {
 		Intent intentWeb	=	new Intent(getApplicationContext(),SquWebAccessService.class);
 		startActivity(intentWeb);
 	}
-
-
+	
+	public void clickLeaveBal(View view)
+	{
+			Intent	intentLeaveBal	=	new Intent(getApplicationContext(),LeaveBalanceService.class);
+			startActivity(intentLeaveBal);
+	}
+	
 }

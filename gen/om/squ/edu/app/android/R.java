@@ -1280,11 +1280,13 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int ic_error=0x7f020057;
-        public static final int ic_launcher=0x7f020058;
-        public static final int ic_payment=0x7f020059;
-        public static final int ic_salary=0x7f02005a;
-        public static final int ic_squ_logo=0x7f02005b;
+        public static final int ic_email=0x7f020057;
+        public static final int ic_error=0x7f020058;
+        public static final int ic_launcher=0x7f020059;
+        public static final int ic_payment=0x7f02005a;
+        public static final int ic_salary=0x7f02005b;
+        public static final int ic_squ_logo=0x7f02005c;
+        public static final int ic_vacation=0x7f02005d;
     }
     public static final class id {
         public static final int action_bar=0x7f05002d;
@@ -1298,9 +1300,9 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050027;
         public static final int action_menu_presenter=0x7f050028;
         public static final int action_mode_close_button=0x7f050035;
-        public static final int action_payment=0x7f050063;
-        public static final int action_settings=0x7f050062;
-        public static final int activityFrame=0x7f05005c;
+        public static final int action_payment=0x7f050069;
+        public static final int action_settings=0x7f050068;
+        public static final int activityFrame=0x7f050061;
         public static final int activity_chooser_view_content=0x7f050036;
         public static final int alignBounds=0x7f050002;
         public static final int alignMargins=0x7f050003;
@@ -1326,14 +1328,15 @@ containing a value of this type.
         public static final int fill=0x7f05000d;
         public static final int fill_horizontal=0x7f05000b;
         public static final int fill_vertical=0x7f050009;
-        public static final int gridPayment=0x7f05005b;
-        public static final int gridPayment_detail=0x7f050060;
+        public static final int gridPayment=0x7f050060;
+        public static final int gridPayment_detail=0x7f050065;
         public static final int home=0x7f050025;
         public static final int homeAsUp=0x7f050017;
         public static final int horizontal=0x7f050000;
         public static final int icon=0x7f05003b;
         public static final int ifRoom=0x7f05001c;
         public static final int image=0x7f050038;
+        public static final int imgBttnLeaveBal=0x7f050056;
         public static final int imgBttnPayment=0x7f050055;
         public static final int imgBttnSalary=0x7f050054;
         public static final int imgBttnSqu=0x7f050053;
@@ -1366,26 +1369,31 @@ containing a value of this type.
         public static final int start=0x7f050010;
         public static final int submit_area=0x7f05004a;
         public static final int tabMode=0x7f050014;
-        public static final int textPaymentDetails=0x7f05005d;
-        public static final int textPaymentLine1=0x7f05005f;
-        public static final int textPaymentYear=0x7f05005e;
+        public static final int textPaymentDetails=0x7f050062;
+        public static final int textPaymentLine1=0x7f050064;
+        public static final int textPaymentYear=0x7f050063;
         public static final int title=0x7f05003c;
         public static final int top=0x7f050004;
         public static final int top_action_bar=0x7f050031;
         public static final int txtId=0x7f050052;
         public static final int txtLblId=0x7f050051;
         public static final int txtLblName=0x7f05004e;
-        public static final int txtLoadingMac=0x7f050057;
+        public static final int txtLeaveBal=0x7f05005e;
+        public static final int txtLeaveText1=0x7f05005c;
+        public static final int txtLeaveText2=0x7f05005d;
+        public static final int txtLeaveText3=0x7f05005f;
+        public static final int txtLoadingMac=0x7f050058;
         public static final int txtName=0x7f05004f;
         public static final int txtSpace1=0x7f050050;
-        public static final int txtSpace2=0x7f050056;
-        public static final int txtSpace3=0x7f050058;
-        public static final int txtViewBeta=0x7f050059;
-        public static final int txtViewMacAdd=0x7f05005a;
+        public static final int txtSpace2=0x7f050057;
+        public static final int txtSpace3=0x7f050059;
+        public static final int txtViewBeta=0x7f05005a;
+        public static final int txtViewMacAdd=0x7f05005b;
         public static final int up=0x7f050032;
         public static final int useLogo=0x7f050015;
         public static final int vertical=0x7f050001;
-        public static final int webview_squ=0x7f050061;
+        public static final int webview_email=0x7f050066;
+        public static final int webview_squ=0x7f050067;
         public static final int withText=0x7f05001e;
     }
     public static final class integer {
@@ -1439,10 +1447,12 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_main=0x7f030018;
-        public static final int layout_payment=0x7f030019;
-        public static final int layout_payment_detail=0x7f03001a;
-        public static final int layout_squ_web=0x7f03001b;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001c;
+        public static final int layout_leavebal=0x7f030019;
+        public static final int layout_payment=0x7f03001a;
+        public static final int layout_payment_detail=0x7f03001b;
+        public static final int layout_squ_email=0x7f03001c;
+        public static final int layout_squ_web=0x7f03001d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
@@ -1492,38 +1502,43 @@ containing a value of this type.
         public static final int action_settings=0x7f0a000f;
         public static final int app_name=0x7f0a000d;
         public static final int app_rest_basic=0x7f0a0016;
+        public static final int app_rest_leaveBal=0x7f0a001b;
         public static final int app_rest_payment=0x7f0a0018;
         /**  possibilities: dev , test  
  Button text 
          */
         public static final int bttn_close=0x7f0a0013;
         public static final int button_Payment=0x7f0a0011;
-        public static final int ex_error_100_mac_service=0x7f0a0023;
-        public static final int ex_error_100_mac_service_title=0x7f0a0024;
-        public static final int ex_error_101_PaymentService=0x7f0a0025;
-        public static final int ex_error_101_PaymentService_title=0x7f0a0026;
-        public static final int ex_error_102_PaymentDetailService=0x7f0a0027;
-        public static final int ex_error_102_PaymentDetailService_title=0x7f0a0028;
+        public static final int ex_error_100_mac_service=0x7f0a0028;
+        public static final int ex_error_100_mac_service_title=0x7f0a0029;
+        public static final int ex_error_101_PaymentService=0x7f0a002a;
+        public static final int ex_error_101_PaymentService_title=0x7f0a002b;
+        public static final int ex_error_102_PaymentDetailService=0x7f0a002c;
+        public static final int ex_error_102_PaymentDetailService_title=0x7f0a002d;
         /**  Exception 
          */
-        public static final int ex_error_99_mac_service=0x7f0a0021;
-        public static final int ex_error_99_mac_service_title=0x7f0a0022;
-        public static final int heading_payment_details=0x7f0a001c;
+        public static final int ex_error_99_mac_service=0x7f0a0026;
+        public static final int ex_error_99_mac_service_title=0x7f0a0027;
+        public static final int heading_payment_details=0x7f0a001e;
         public static final int hello_world=0x7f0a000e;
+        public static final int leave_balance_curr_txt=0x7f0a0024;
+        public static final int leave_balance_days_txt=0x7f0a0025;
+        public static final int leave_balance_heading=0x7f0a0023;
         /**  end REST Service urls  
          */
-        public static final int menu_payment_details=0x7f0a001b;
+        public static final int menu_payment_details=0x7f0a001d;
         public static final int mode_deploy=0x7f0a0012;
-        public static final int payment_amt_txt=0x7f0a001f;
-        public static final int payment_desc_txt=0x7f0a0020;
-        public static final int payment_dt_txt=0x7f0a001e;
-        public static final int payment_year=0x7f0a001d;
+        public static final int payment_amt_txt=0x7f0a0021;
+        public static final int payment_desc_txt=0x7f0a0022;
+        public static final int payment_dt_txt=0x7f0a0020;
+        public static final int payment_year=0x7f0a001f;
         public static final int prefer_name=0x7f0a0010;
         public static final int server_rest_dev=0x7f0a0015;
         /**  start REST Service urls  
          */
         public static final int server_rest_test=0x7f0a0014;
         public static final int service_basic_macadd=0x7f0a0017;
+        public static final int service_leaveBal_balance=0x7f0a001c;
         public static final int service_payment_currYear=0x7f0a001a;
         public static final int service_payment_payment=0x7f0a0019;
     }

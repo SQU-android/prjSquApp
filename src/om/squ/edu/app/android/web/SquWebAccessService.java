@@ -18,7 +18,7 @@ public class SquWebAccessService extends ActionBarActivity
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_squ_web);
-		String urlSql = "http://www.squ.edu.om";
+		String urlSql = "http://wwwdev.squ.edu.om";
 		WebView	webViewSqu	=	(WebView)findViewById(R.id.webview_squ);
 		webViewSqu.loadUrl(urlSql);
 	}

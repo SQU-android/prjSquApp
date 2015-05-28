@@ -93,6 +93,21 @@ public class ServiceUtil
 		return urlPayment;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
+	public String getUrlLeaveBal()
+	{
+		String 	appLeaveBal		=	resources.getString(R.string.app_rest_leaveBal);
+		String	serviceLeaveBal	=	resources.getString(R.string.service_leaveBal_balance);
+		String	urlLeaveBal		=	server+"/"+appLeaveBal+"/"+serviceLeaveBal;
+		
+		return urlLeaveBal;
+	}
+	
+	
+	
 	/* For TextView*/
 	 public  TextView getTextView()
 	   {

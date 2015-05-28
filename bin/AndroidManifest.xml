@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="om.squ.edu.app.android"
-    android:versionCode="2015051401"
-    android:versionName="1.2" >
+    android:versionCode="2015052801"
+    android:versionName="1.3" >
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
 	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
@@ -13,7 +13,7 @@
     
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="22" />
 
     <application
         android:allowBackup="true"
@@ -39,6 +39,12 @@
         
         <activity
             android:name="om.squ.edu.app.android.web.SquWebAccessService">
+        </activity>
+        <activity
+            android:name="om.squ.edu.app.android.web.SquEmailAccessService">
+        </activity>
+        <activity
+			android:name="om.squ.edu.app.android.leave.leavebal.LeaveBalanceService">            
         </activity>
         
         

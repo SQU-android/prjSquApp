@@ -44,7 +44,7 @@
        </LinearLayout>
 
           <LinearLayout
-              android:layout_width="163dp"
+              android:layout_width="300dp"
               android:layout_height="wrap_content"
               android:orientation="horizontal" >
 
@@ -56,6 +56,7 @@
 				  android:background="@null"
 				  android:onClick="clickSqu"
                   android:src="@drawable/ic_squ_logo" />
+
              <ImageButton
                   android:id="@+id/imgBttnSalary"
                   android:layout_width="57dp"
@@ -63,15 +64,21 @@
 				  android:background="@null"
 				  android:onClick="clickSalary"
                   android:src="@drawable/ic_salary" />
-
-				    <ImageButton
-				        android:id="@+id/imgBttnPayment"
-				        android:layout_width="57dp"
-				        android:layout_height="50dp"
-				        android:background="@null"
-				        android:contentDescription="@string/button_Payment"
-				        android:onClick="clickPayment"
-				        android:src="@drawable/ic_payment" />
+		    <ImageButton
+		        android:id="@+id/imgBttnPayment"
+		        android:layout_width="57dp"
+		        android:layout_height="50dp"
+		        android:background="@null"
+		        android:contentDescription="@string/button_Payment"
+		        android:onClick="clickPayment"
+		        android:src="@drawable/ic_payment" />
+		   <ImageButton
+		        android:id="@+id/imgBttnLeaveBal"
+		        android:layout_width="57dp"
+		        android:layout_height="50dp"
+		        android:background="@null"
+		        android:onClick="clickLeaveBal"
+		        android:src="@drawable/ic_vacation" />
 		</LinearLayout>
           <TextView
               android:id="@+id/txtSpace2"
