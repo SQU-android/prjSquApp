@@ -48,7 +48,7 @@ public class PaymentDetailService extends ActionBarActivity implements TaskGetCu
 								serviceUtil				=	new ServiceUtil(resources, mode);
 			String				urlPaymentCurrYearRest	=	serviceUtil.getUrlPayment()+"/" +currYear;
 			
-			new PaymentCurrentYearRestService(this, resources.getString(R.string.payment_year), tv).execute(urlPaymentCurrYearRest);
+			new PaymentCurrentYearRestService(PaymentDetailService.this, this, resources.getString(R.string.payment_year), tv).execute(urlPaymentCurrYearRest);
 			
 			
 			
@@ -81,7 +81,7 @@ public class PaymentDetailService extends ActionBarActivity implements TaskGetCu
 		GridLayout	gridLayout		=	(GridLayout)findViewById(R.id.gridPayment_detail);
 		
 		
-		new PaymentDetailRestService(gridLayout, getApplicationContext(),resources).execute(urlPaymentDetail);
+		new PaymentDetailRestService(gridLayout, PaymentDetailService.this,resources).execute(urlPaymentDetail);
 
 	
 	}

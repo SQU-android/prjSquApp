@@ -13,12 +13,14 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.webkit.WebView.FindListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * @author Bhabesh
@@ -27,16 +29,19 @@ import android.widget.TextView;
 public class MacService 
 {
 	User userServ = null; 
-	private 	String 		urlWifiUser 	=	null;
-	private		TextView 	textViewName	=	null;
-	private		TextView	textViewId		=	null;
+	private 	String 		urlWifiUser;
+	private		TextView 	textViewName;
+	private		TextView	textViewId;
 	private 	Editor 		editor;
 	protected	TextView	textLoadingMac;
+	private		Resources	resources;
+	private		Context		context;
 	
 	
-	public MacService(String macAddress, TextView txtViewName, TextView txtViewId, TextView txtLoadingMac, SharedPreferences	prefUser, Resources resources)
+	public MacService(Context context, String macAddress, TextView txtViewName, TextView txtViewId, TextView txtLoadingMac, SharedPreferences	prefUser, Resources resources)
 	{
-						
+		this.resources			=	resources;
+		this.context			=	context;
 		String		mode 		= 	resources.getString(R.string.mode_deploy);
 		ServiceUtil	serviceUtil	=	new ServiceUtil(resources, mode);
 		
@@ -57,7 +62,7 @@ public class MacService
 	private class UserService extends AsyncTask<String, Integer, User>
 	{
 		private User	user	=	null;
-		
+		private String	msgErr	=	null;		
 		
 		/**
 		 * @return the user
@@ -69,7 +74,7 @@ public class MacService
 		@Override
 		protected User doInBackground(String... params) {
 			String 			urlRest 		=	params[0];
-			
+			User 			user			=	null;  
 			
 			
 			RestTemplate 	restTemplate	=	new RestTemplate();
@@ -78,8 +83,15 @@ public class MacService
 			 */
 			restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(HttpUtils.getNewHttpClient()));				/*By pass ssl */
 			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-			
-			User user	=	restTemplate.getForObject(urlRest, User.class);
+			try
+			{
+				user	=	restTemplate.getForObject(urlRest, User.class);
+			}
+			catch(Exception ex)
+			{
+				
+				msgErr	=	ex.getMessage();
+			}
 			
 			return user;
 
@@ -87,11 +99,24 @@ public class MacService
 		
 		   @Override
 		    protected void onPostExecute(User user) {
-		    	textViewName.setText(user.getUserName());
-		    	textViewId.setText(user.getUserId());
-		    	textLoadingMac.setText("");
-		    	editor.putString("userId", user.getUserId());
-		    	editor.commit();
+		    	if (msgErr != null)
+		    	{
+		    		ServiceUtil	serviceUtil		=	new ServiceUtil(context);
+		    		String		strTitle		=	resources.getString(R.string.ex_error_100_mac_service_title);
+		    		String		strErrMsg		=	resources.getString(R.string.ex_error_100_mac_service);
+		    		String		strBttnClose	=	resources.getString(R.string.bttn_close);
+		    		
+		    		serviceUtil.alertDialogueError(strTitle, strErrMsg, strBttnClose);
+		    	}
+		    	else
+		    	{
+				   	textViewName.setText(user.getUserName());
+			    	textViewId.setText(user.getUserId());
+			    	textLoadingMac.setText("");
+			    	editor.putString("userId", user.getUserId());
+			    	editor.commit();
+		    	}
+
 		    }
 		
 		   @Override

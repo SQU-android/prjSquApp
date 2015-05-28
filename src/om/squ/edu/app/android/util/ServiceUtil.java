@@ -3,12 +3,16 @@
  */
 package om.squ.edu.app.android.util;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
+import android.widget.Toast;
 import om.squ.edu.app.android.R;
+import om.squ.edu.app.android.payment.service.PaymentService;
 
 /**
  * @author Bhabesh
@@ -27,6 +31,10 @@ public class ServiceUtil
 	private	String	strColor;
 	
 
+	public ServiceUtil(Context context)
+	{
+		this.context	=	context;
+	}
 
 	public ServiceUtil(Resources	resources, String mode) {
 		this.resources 	= 	resources;
@@ -85,15 +93,57 @@ public class ServiceUtil
 		return urlPayment;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
+	public String getUrlLeaveBal()
+	{
+		String 	appLeaveBal		=	resources.getString(R.string.app_rest_leaveBal);
+		String	serviceLeaveBal	=	resources.getString(R.string.service_leaveBal_balance);
+		String	urlLeaveBal		=	server+"/"+appLeaveBal+"/"+serviceLeaveBal;
+		
+		return urlLeaveBal;
+	}
+	
+	
+	
 	/* For TextView*/
 	 public  TextView getTextView()
 	   {
 		   TextView textView				= 	new TextView(context);
 		   textView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		   textView.setPadding(5, 5, 5, 5);
+		   textView.setPadding(10, 10, 10, 10);
 		   textView.setTextColor(Color.parseColor(strColor));
 		   textView.setText(strText);
 		   return textView;
 	   }
 	
+	 
+	 public void alertDialogueError(String strErrTitle, String strErrMsg, String strBttnCloseTxt)
+	 {
+		 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+		   alertDialog.setTitle(strErrTitle);
+		   alertDialog.setMessage(strErrMsg);
+		   alertDialog.setIcon(R.drawable.ic_error);
+		   alertDialog.setNegativeButton(strBttnCloseTxt, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+			}
+		});
+		   
+		   alertDialog.create();
+		   try
+		   {
+			   alertDialog.show();
+		   }
+		   catch(Exception ex)
+		   {
+			   Toast.makeText(context, "Some Unexpected Error : Details : "+ex.getMessage(), Toast.LENGTH_LONG);
+		   }
+	   } 
+	 
+	 
 }

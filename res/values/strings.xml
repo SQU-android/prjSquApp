@@ -11,6 +11,9 @@
     
     <string name="mode_deploy">dev</string> <!-- possibilities: dev , test  -->
     
+    <!-- Button text -->
+    <string name="bttn_close">Close</string>
+    
  <!-- start REST Service urls  -->   
 
     <string name="server_rest_test">https://172.20.10.73:8443</string>
@@ -25,6 +28,12 @@
     <string name="service_payment_payment">payment</string>
     <string name="service_payment_currYear">currYear</string>
     
+    <string name="app_rest_leaveBal">prjLeaveBal</string>
+    <string name="service_leaveBal_balance">leaveBal</string>
+    
+    
+    
+    
 <!-- end REST Service urls  -->
     
     <string name="menu_payment_details">Payment Details</string>
@@ -35,12 +44,21 @@
     <string name="payment_amt_txt">Amount</string>
     <string name="payment_desc_txt">Description</string>
     
+    <string name="leave_balance_heading">Leave Balance</string>
+	<string name="leave_balance_curr_txt">Current leave balance : </string>
+	<string name="leave_balance_days_txt">  days </string>     
     
-    <!-- Test values -->
-    <string-array name="Titles">
-        <item>The Tragedy of Hamlet, Prince of Denmark</item>
-        <item>King Lear</item>
-        <item>Julius Caesar</item>
-    </string-array>
+	<!-- Exception -->
+	<string name="ex_error_99_mac_service">Hi!! Check SQU Wifi Connection (Ex# : 100)</string>
+	<string name="ex_error_99_mac_service_title">Wifi Connection (Ex# : 100)</string>
+	<string name="ex_error_100_mac_service">Hi!! Service not available now. (Ex# : 100)</string>
+	<string name="ex_error_100_mac_service_title">Mac Service (Ex# : 100)</string>
+	<string name="ex_error_101_PaymentService">Hi!! Salary Service not available now.</string>
+	<string name="ex_error_101_PaymentService_title">Salary Service (101)</string>
+	<string name="ex_error_102_PaymentDetailService">Hi!! Payment Service not available now.</string>
+	<string name="ex_error_102_PaymentDetailService_title">Payment Service (102)</string>
+		
+	
+	
     
 </resources>

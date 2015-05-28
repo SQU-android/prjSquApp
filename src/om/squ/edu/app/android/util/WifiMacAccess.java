@@ -36,7 +36,7 @@ public class WifiMacAccess
 		    // WIFI IS NOW ENABLED. GRAB THE MAC ADDRESS HERE
 		    WifiInfo info = wifiManager.getConnectionInfo();
 		    macAddress = info.getMacAddress();
-		    wifiManager.setWifiEnabled(false);
+		    //wifiManager.setWifiEnabled(false);
 		}
 		
 		macAddress	=	macAddress.replace(":", "");
